@@ -11,14 +11,18 @@ dotenv.config({path:".env"});
 const app = express();
 
 app.set("views", path.join(__dirname, 'views'));
-app.set("view engine", 'ejs');
+app.set("view engine", "ejs");
 
 
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.urlencoded({ extended: false }));
-app.use(helmet());
+// app.use(cors());
+// app.use(morgan('dev'));
+// app.use(express.urlencoded({ extended: false }));
+// app.use(helmet());
 
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+    res.render('index')
+});
 
 app.listen(process.env.PORT, ()=> console.log(`listening on http://localhost:${process.env.PORT}`));
