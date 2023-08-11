@@ -1,10 +1,8 @@
 <%-include ("partials/header") %>
 
-
-<div class="container mx-auto p-8">
-    <h2 class="text-2xl font-bold mb-4">Bienvenido a mi sitio web</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit....</p>
-</div>
-
+<form ref="uploadForm" id="uploadForm" action="" method="post" encType="">
+  <input type="file" name="sampleFile" class="w-full p-2 border rounded-md" placeholder="" />
+  <input type="submit" value="Upload!" class="w-full p-2 bg-blue-500 text-white rounded-md" />
+</form>
 
 <%-include ("partials/footer") %>

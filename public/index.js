@@ -1,0 +1,1 @@
+const uploadForm = addEventListener('#uploadForm')

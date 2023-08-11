@@ -1,9 +1,11 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
+import router from './routes/gallery.routes';
 
 //variables de entorno
 dotenv.config({path:".env"});
@@ -14,15 +16,16 @@ app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", "ejs");
 
 
-// app.use(cors());
-// app.use(morgan('dev'));
-// app.use(express.urlencoded({ extended: false }));
-// app.use(helmet());
+//*MIDDLEWARES
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
+app.use(fileUpload());
 
-// app.use(express.static(path.join(__dirname, 'public')));
+ app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-    res.render('index')
-});
+ //*RUTAS
+ app.use("/", router)
 
 app.listen(process.env.PORT, ()=> console.log(`listening on http://localhost:${process.env.PORT}`));
