@@ -5,7 +5,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
 const path = require('path');
-import router from './routes/gallery.routes';
+const router = require('./routes/gallery.routes'); 
 
 //variables de entorno
 dotenv.config({path:".env"});
@@ -22,6 +22,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(fileUpload());
+app.use(express.json());
 
  app.use(express.static(path.join(__dirname, 'public')));
 
